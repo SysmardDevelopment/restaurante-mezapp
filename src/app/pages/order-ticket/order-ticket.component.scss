@@ -1,0 +1,50 @@
+.ticket_content_div {
+    align-items: space-evenly;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.med_lbl {
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.img_visa{
+    font-size: 17px;
+    height: 30px !important;
+    width: 30px !important;
+}
+
+.dataContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.line_div{
+    height: 1px;
+    width: 100%;
+    background: lightgray;
+}
+
+.small_lbl2{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.prize1 {
+    color: lightgray;
+    font-size: 16px;
+}
+
+.card-images-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 66px;
+}

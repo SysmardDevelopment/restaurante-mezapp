@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'Select Drivers' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content">
+    <p class="noDriversFoundWarning" *ngIf="!drivers?.length"> {{'No Active Driver Found' | translate}} </p>
+    <ion-list>
+      <ion-radio-group [(ngModel)]="selectedDriver">
+        <ion-list-header>
+          <ion-label>{{'Drivers' | translate}}</ion-label>
+        </ion-list-header>
+        <ion-item *ngFor="let driver of drivers"  lines="none" >
+          <ion-avatar slot="start" *ngIf="driver.current=='active'">
+            <img [src]="driver.coverImage" />
+          </ion-avatar>
+          <ion-label>{{driver.fullname}}</ion-label>
+          <ion-label *ngIf="driver.current!='busy'">{{'Distance' | translate}} : {{driver.distance}} km</ion-label>
+          <ion-radio *ngIf="driver.current!='busy'" [value]="driver.id"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+
+  <div class="div_btn">
+    <ion-row>
+      <ion-col size="6" class="cancel">
+        <ion-button (click)="select()" color="primary" expand="full">
+          {{'Select' | translate}}
+        </ion-button>
+      </ion-col>
+      <ion-col size="6" class="cancel">
+        <ion-button (click)="close()" color="light" expand="full">
+          {{'Cancel' | translate}}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

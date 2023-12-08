@@ -1,0 +1,73 @@
+<!-- Encabezado de la página -->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon slot="icon-only" color="dark" mode="md" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{'Order Payment Details' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Contenido de la página -->
+<ion-content>
+  <!-- Mientras se esté cargando la información -->
+  <div *ngIf="!loaded" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <ion-spinner color="primary" name="crescent"></ion-spinner>
+  </div>
+
+  <!-- Una vez que se ha cargado la app, muestra el contenido cargado -->
+  <div *ngIf="loaded" class="ticket_content_div">
+    <!-- Detalles de pago de la orden -->
+    <div class="card_div2">
+      <div class="order_detail">
+        <div class="dataContainer">
+          <!-- Número de tarjeta (últimos 4 dígitos) -->
+          <ion-label class="small_lbl2">{{ 'StripeId' | translate }}</ion-label>
+          <span class="prize1">{{ paymentId }}</span>
+        </div>
+        <div class="dataContainer">
+          <!-- Método de pago -->
+          <ion-label class="small_lbl2">{{ 'PayMethod' | translate }}</ion-label>
+          <!-- Ícono de Stripe -->
+          <div class="card-images-container">
+            <img *ngIf="payMethod === 'paypal'" src="assets/paypal.png" class="img_visa"/>
+            <img *ngIf="payMethod === 'stripe'" src="assets/stripe.png" class="img_visa"/>
+            <!-- Ícono de la marca de la tarjeta -->
+            <img src="assets/visa.png" class="img_visa"/>
+          </div>
+        </div>
+        <div class="dataContainer">
+          <!-- Tiempo de transacción -->
+          <ion-label class="small_lbl2">{{ 'TransactionTime' | translate }}</ion-label>
+          <span class="prize1">{{ transactionTime }}</span>
+        </div>
+        <div class="line_div"></div>
+        <div class="dataContainer">
+          <!-- Precio parcal de comida -->
+          <ion-label class="small_lbl2">{{ 'SubTotal' | translate }}</ion-label>
+          <span class="prize1">{{ getCurrency() }}{{ foodPrice }}</span>
+        </div>
+        <div class="dataContainer">
+          <!-- Precio de entrega -->
+          <ion-label class="small_lbl2">{{ 'Delivery Charge' | translate }}</ion-label>
+          <span class="prize1">{{ getCurrency() }}{{ deliveryTotal }}</span>
+        </div>
+        <div class="dataContainer">
+          <!-- Impuesto de servicio -->
+          <ion-label class="small_lbl2">{{ 'Service Tax' | translate }}</ion-label>
+          <span class="prize1">{{ getCurrency() }}{{ serviceTax }}</span>
+        </div>
+        <div class="line_div"></div>
+        <div class="dataContainer">
+          <!-- Total de pago -->
+          <ion-label class="med_lbl">{{'Total' | translate}}</ion-label>
+          <span class="med_lbl">{{ getCurrency() }}{{ paidTotal }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer></ion-footer>
