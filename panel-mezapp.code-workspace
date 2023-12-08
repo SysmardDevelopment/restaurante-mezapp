@@ -5,6 +5,12 @@
 		},
 		{
 			"path": "."
+		},
+		{
+			"path": "../deliver-mezapp"
+		},
+		{
+			"path": "../user-mezapp"
 		}
 	]
 }
